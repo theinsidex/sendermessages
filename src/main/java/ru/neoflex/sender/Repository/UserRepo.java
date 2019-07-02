@@ -12,7 +12,7 @@ import java.util.List;
 public class UserRepo implements UserDao {
     @Autowired
     private JdbcTemplate jdbcTemplate;
-    private final String ADDUSER="INSERT INTO User('name','email') VALUES (?,?)";
+    private final String ADDUSER="INSERT INTO User(name,email) VALUES (?,?)";
     private final String LISTUSERS="SELECT * FROM User";
     private final String GETUSER="SELECT * FROM User WHERE id=?";
     private final String DELETEUSER="DELETE FROM User WHERE id=?";

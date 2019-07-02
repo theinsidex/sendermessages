@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import ru.neoflex.sender.Model.User;
+import ru.neoflex.sender.Service.MailScheduler;
 import ru.neoflex.sender.Service.UserService;
 
 import java.util.List;
@@ -36,12 +37,12 @@ public class UserController {
     public String save(User user)
     {
         userService.addUser(user);
-        return "redirect://user/list";
+        return "redirect://localhost:8080/user/list";
     }
 //Удаление пользователя
     @GetMapping("/{id}/delete")
     public String delete(@PathVariable long id){
         userService.deleteUser(userService.getUser(id));
-        return "redirect://user/list";
+        return "redirect://localhost:8080/user/list";
     }
 }
