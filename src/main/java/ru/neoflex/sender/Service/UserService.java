@@ -18,11 +18,11 @@ public class UserService {
         userRepo.addUser(user);
     }
     public List<User> listUsers(){
-        List<User> users=userRepo.listUsers();
+        List<User> users = userRepo.listUsers();
         return users;
     }
     public User getUser(long id){
-        User user=userRepo.getUser(id);
+        User user = userRepo.getUser(id);
         return user;
     }
     public void deleteUser(User user){

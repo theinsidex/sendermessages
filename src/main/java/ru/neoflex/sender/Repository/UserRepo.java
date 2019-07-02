@@ -22,12 +22,12 @@ public class UserRepo implements UserDao {
     }
 
     public List<User> listUsers() {
-       List<User> users=jdbcTemplate.query(LISTUSERS,new UserMapper());
+       List<User> users = jdbcTemplate.query(LISTUSERS,new UserMapper());
         return users;
     }
 
     public User getUser(long id) {
-        User user= (User) jdbcTemplate.queryForObject(GETUSER,new Object[]{id},new UserMapper());
+        User user = (User) jdbcTemplate.queryForObject(GETUSER,new Object[]{id},new UserMapper());
         return user;
     }
 

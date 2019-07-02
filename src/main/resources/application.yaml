@@ -10,5 +10,12 @@ spring:
   h2:
     console:
     enabled: true
-
+  mail:
+    host: smtp.yandex.ru
+    username: ivanbranchaev1@yandex.ru
+    password: qwerty620
+    port: 465
+    protocol: smtps
+mail:
+  debug: true
 
