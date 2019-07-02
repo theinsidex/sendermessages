@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head></head>
+<body>
+<div style="margin-top: 10px;margin-bottom:10px;float:right;">
+    <a href="/"><input type="button" name="add" class="btn btn-secondary" value="На главную"></a>
+</div>
+<h2>Информация о пользователе</h2>
+<form action="#" th:action="@{/user/save}" th:object="${user}" method="post">
+    <p> ФИО: <input type="text" th:name="name"/> </p>
+    <p> Email<input type="email" th:name="email"> </p>
+    <div><input type="submit" value="Зарегистрировать"/></div>
+</form>
+</body>
+</html>

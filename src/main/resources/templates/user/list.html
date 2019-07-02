@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head></head>
+<body>
+<table class="table table-striped">
+    <div style="margin-top: 10px;margin-bottom:10px;float:right;">
+        <a href="/index"><input type="button" name="add" class="btn btn-secondary" value="На главную"></a>
+    </div>
+    <div style="margin-top: 10px;margin-bottom:10px;">
+        <a href="/employee/create"><input type="button" name="add" class="btn btn-info" value="Добавить нового сотрудника"></a>
+    </div>
+    <thead>
+    <th scope="col">ID</th>
+    <th scope="col">ФИО</th>
+    <th scope="col">Email</th>
+    <th>Edit</th>
+    <th>Delete</th>
+    </thead>
+    <tr th:each="user: ${users}">
+        <td th:utext="${user.id}"></td>
+        <td th:utext="${user.name}"></td>
+        <td th:utext="${user.email}"></td>
+        <td><a th:href="@{/user/{id}/edit(id=${user.id})}">Изменить</a></td>
+        <td><a th:href="@{/user/{id}/delete(id=${user.id})}">Удалить</a></td>
+    </tr>
+</table>
+</body>
+</html>
