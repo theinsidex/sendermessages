@@ -13,7 +13,7 @@ public class MailConfig {
     @Value("${spring.mail.host}")
     private String host;
 
-    @Value("${spring.mail.username")
+    @Value("${spring.mail.username}")
     private String username;
 
     @Value("${spring.mail.password}")
@@ -22,7 +22,7 @@ public class MailConfig {
     @Value("${spring.mail.port}")
     private int port;
 
-    @Value("${spring.mail.protocol")
+    @Value("${spring.mail.protocol}")
     private String protocol;
 
     @Value("${mail.debug}")
@@ -38,7 +38,7 @@ public class MailConfig {
 
         Properties properties = mailSender.getJavaMailProperties();
 
-        properties.setProperty("mail.transport.protocol",protocol);
+        properties.setProperty("mail.transport.protocol","smtps");
         properties.setProperty("mail.debug",debug);
         return mailSender;
     }

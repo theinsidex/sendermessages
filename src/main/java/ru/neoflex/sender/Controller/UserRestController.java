@@ -16,31 +16,29 @@ public class UserRestController {
     public UserRestController(UserService userService){
         this.userService=userService;
     }
-
+//Список пользователелй
     @RequestMapping(value = "/list",
                     method = RequestMethod.GET,
                     produces = {MediaType.APPLICATION_JSON_VALUE})
     @ResponseBody
     public List<User> listUsers() {
-        List<User> users=userService.listUsers();
-        return users;
+       return userService.listUsers();
     }
-
+//Добавление пользователя
     @RequestMapping(value = "/add",
                     method = RequestMethod.POST,
                     produces = {MediaType.APPLICATION_JSON_VALUE})
     @ResponseBody
-    public void adduser(@RequestBody User user) {
+    public void addUser(@RequestBody User user) {
         userService.addUser(user);
     }
-
+//Удаление пользователя
     @RequestMapping(value = "/delete",
                     method = RequestMethod.DELETE,
                     produces = {MediaType.APPLICATION_JSON_VALUE}
     )
     @ResponseBody
     public void deleteUser(@PathVariable("id") long id ){
-        User user=userService.getUser(id);
-        userService.deleteUser(user);
+        userService.deleteUser(id);
     }
 }

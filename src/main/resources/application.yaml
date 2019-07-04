@@ -18,4 +18,6 @@ spring:
     protocol: smtps
 mail:
   debug: true
+server:
+  port: 8080
 

@@ -24,11 +24,14 @@ public class MailScheduler {
 
     @Scheduled(cron = "0 0 17 * * MON-FRI")
     public void sendMessage(){
-        List<User> users = userService.listUsers().stream() //проверка на наличие email
-                .filter(x->!x.getEmail().equals(null))
-                .collect(Collectors.toList());
-        for(User user:users){
+        List<User> usersWithEmail = checkUsers();
+        for(User user:usersWithEmail){
             mailSender.send(user.getEmail(),SUBJECT,TEXT);
         }
+    }
+    public List<User> checkUsers(){
+        return userService.listUsers().stream() //проверка на наличие email
+                .filter(x -> !x.getEmail().equals(null))
+                .collect(Collectors.toList());
     }
 }

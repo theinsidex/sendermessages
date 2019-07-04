@@ -25,7 +25,7 @@ public class UserService {
         User user = userRepo.getUser(id);
         return user;
     }
-    public void deleteUser(User user){
-        userRepo.deleteUser(user);
+    public void deleteUser(long id){
+        userRepo.deleteUser(id);
     }
 }

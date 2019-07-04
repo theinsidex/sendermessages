@@ -31,7 +31,7 @@ public class UserRepo implements UserDao {
         return user;
     }
 
-    public void deleteUser(User user) {
-        jdbcTemplate.update(DELETEUSER,user.getId());
+    public void deleteUser(long id) {
+        jdbcTemplate.update(DELETEUSER,id);
     }
 }

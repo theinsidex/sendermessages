@@ -1,19 +1,23 @@
 package ru.neoflex.sender.Model;
 
-import lombok.Data;
+import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
 
 @Entity
-@Data
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    @NotBlank(message = "Field name is empty!")
+    @Length(min = 3,max=30,message = "Field name: minimum length=3,maximum length=255")
     private String name;
+    @NotBlank(message = "Field email is empty!")
+    @Length(min = 3,max=30,message = "Field email: minimum length=4,maximum length=255")
     private String email;
 
     public long getId() {
@@ -38,5 +42,14 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                '}';
     }
 }
