@@ -2,30 +2,33 @@ package ru.neoflex.sender.Service;
 
 import org.springframework.stereotype.Service;
 import ru.neoflex.sender.Model.User;
-import ru.neoflex.sender.Repository.UserRepo;
+import ru.neoflex.sender.Repository.UserRepoMDB;
 
 import java.util.List;
 
+
 @Service
 public class UserService {
-    private UserRepo userRepo;
+    private UserRepoMDB userRepo;
 
-    public UserService(UserRepo userRepo){
+    public UserService(UserRepoMDB userRepo){
         this.userRepo=userRepo;
     }
 
-    public void addUser(User user){
-        userRepo.addUser(user);
+    public void insert(User user){
+
+        userRepo.insert(user);
     }
     public List<User> listUsers(){
-        List<User> users = userRepo.listUsers();
-        return users;
+        return userRepo.findAll();
     }
+
     public User getUser(long id){
-        User user = userRepo.getUser(id);
+        User user = userRepo.findById(id);
         return user;
     }
-    public void deleteUser(long id){
-        userRepo.deleteUser(id);
+
+    public void remove(long id){
+        userRepo.remove(id);
     }
 }

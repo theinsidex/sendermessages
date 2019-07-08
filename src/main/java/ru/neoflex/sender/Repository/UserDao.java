@@ -5,8 +5,8 @@ import ru.neoflex.sender.Model.User;
 import java.util.List;
 
 public interface UserDao {
-    void addUser(User user);
-    List<User> listUsers();
-    User getUser(long id);
-    void deleteUser(long id);
+    void insert(User user);
+    List<User> findAll();
+    User findById(long id);
+    void remove(long id);
 }

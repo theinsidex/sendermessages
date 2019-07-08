@@ -17,21 +17,21 @@ public class UserRepo implements UserDao {
     private final String GETUSER="SELECT * FROM User WHERE id=?";
     private final String DELETEUSER="DELETE FROM User WHERE id=?";
 
-    public void addUser(User user) {
+    public void insert(User user) {
         jdbcTemplate.update(ADDUSER,user.getName(),user.getEmail());
     }
 
-    public List<User> listUsers() {
+    public List<User> findAll() {
        List<User> users = jdbcTemplate.query(LISTUSERS,new UserMapper());
         return users;
     }
 
-    public User getUser(long id) {
+    public User findById(long id) {
         User user = (User) jdbcTemplate.queryForObject(GETUSER,new Object[]{id},new UserMapper());
         return user;
     }
 
-    public void deleteUser(long id) {
+    public void remove(long id) {
         jdbcTemplate.update(DELETEUSER,id);
     }
 }

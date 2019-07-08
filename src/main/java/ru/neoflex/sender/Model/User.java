@@ -1,17 +1,20 @@
 package ru.neoflex.sender.Model;
 
 import org.hibernate.validator.constraints.Length;
+import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 
+import static javax.persistence.GenerationType.AUTO;
+import static javax.persistence.GenerationType.SEQUENCE;
+
 @Entity
+@Document
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = SEQUENCE)
     private long id;
     @NotBlank(message = "Field name is empty!")
     @Length(min = 3,max=30,message = "Field name: minimum length=3,maximum length=255")

@@ -1,6 +1,5 @@
 package ru.neoflex.sender.Controller;
 
-import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -42,15 +41,15 @@ public class UserController {
     @PostMapping("/save")
     public String save(User user)
     {
-        userService.addUser(user);
+        userService.insert(user);
         MailScheduler mailScheduler = new MailScheduler(mailSender,userService);
         mailScheduler.sendMessage();
-        return "redirect://localhost:8080/user/list";
+        return "redirect:list";
     }
 //Удаление пользователя
     @GetMapping("/{id}/delete")
     public String delete(@PathVariable long id){
-        userService.deleteUser(id);
-        return "redirect://localhost:8080/user/list";
+        userService.remove(id);
+        return "redirect:/user/list";
     }
 }

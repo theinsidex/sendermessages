@@ -35,13 +35,13 @@ public class UserControllerTest {
     public void delete() {
         long id = 5;
         userController.delete(id);
-        verify(userService).deleteUser(id);
+        verify(userService).remove(id);
     }
 
     @Test
     public void save(){
         User user = new User();
         userController.save(user);
-        verify(userService).addUser(user);
+        verify(userService).insert(user);
     }
 }

@@ -27,18 +27,18 @@ public class UserRestController {
 //Добавление пользователя
     @RequestMapping(value = "/add",
                     method = RequestMethod.POST,
-                    produces = {MediaType.APPLICATION_JSON_VALUE})
+                    produces = {MediaType.APPLICATION_JSON_VALUE},
+                    consumes = {MediaType.APPLICATION_JSON_VALUE})
     @ResponseBody
     public void addUser(@RequestBody User user) {
-        userService.addUser(user);
+        userService.insert(user);
     }
 //Удаление пользователя
     @RequestMapping(value = "/delete",
                     method = RequestMethod.DELETE,
-                    produces = {MediaType.APPLICATION_JSON_VALUE}
-    )
+                    produces = {MediaType.APPLICATION_JSON_VALUE})
     @ResponseBody
     public void deleteUser(@PathVariable("id") long id ){
-        userService.deleteUser(id);
+        userService.remove(id);
     }
 }

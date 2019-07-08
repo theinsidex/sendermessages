@@ -23,27 +23,27 @@ public class UserServiceTest {
     @Test
     public void addUser() {
         User user = new User();
-        userService.addUser(user);
-        verify(userRepo).addUser(user);
+        userService.insert(user);
+        verify(userRepo).insert(user);
     }
 
     @Test
     public void listUsers() {
         userService.listUsers();
-        verify(userRepo).listUsers();
+        verify(userRepo).findAll();
     }
 
     @Test
     public void getUser() {
         long id = 5;
         userService.getUser(id);
-        verify(userRepo).getUser(id);
+        verify(userRepo).findById(id);
     }
 
     @Test
     public void deleteUser() {
         long id = 5;
-        userService.deleteUser(id);
-        verify(userRepo).deleteUser(id);
+        userService.remove(id);
+        verify(userRepo).remove(id);
     }
 }

@@ -10,6 +10,7 @@
 	</parent>
 	<groupId>ru.neoflex</groupId>
 	<artifactId>sender</artifactId>
+    <packaging>war</packaging>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>sender</name>
 	<description>Demo project for Spring Boot</description>
@@ -17,7 +18,7 @@
 	<properties>
 		<java.version>1.8</java.version>
 	</properties>
-<dependencies>
+    <dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
@@ -45,7 +46,10 @@
 		<artifactId>thymeleaf</artifactId>
 		<version>3.0.11.RELEASE</version>
 	</dependency>
-
+	<dependency>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-data-mongodb</artifactId>
+	</dependency>
 
 	<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -117,7 +121,23 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			<plugin>
+				<groupId>com.spotify</groupId>
+				<artifactId>docker-maven-plugin</artifactId>
+				<version>0.4.5</version>
+				<configuration>
+					<imageName>message-sender</imageName>
+					<baseImage>java</baseImage>
+					<entryPoint>["java", "-jar", "/${project.build.finalName}.war"]</entryPoint>
+					<resources>
+						<resource>
+							<targetPath>/</targetPath>
+							<directory>${project.build.directory}</directory>
+							<include>${project.build.finalName}.war</include>
+						</resource>
+					</resources>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
-
 </project>

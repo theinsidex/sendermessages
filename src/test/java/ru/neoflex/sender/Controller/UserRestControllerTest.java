@@ -56,13 +56,13 @@ public class UserRestControllerTest {
     @Test
     public void addUser(){
         userController.addUser(user);
-        verify(userService).addUser(user);
+        verify(userService).insert(user);
         }
 
     @Test
     public void deleteUser(){
         userController.deleteUser(user.getId());
-        verify(userService).deleteUser(user.getId());
+        verify(userService).remove(user.getId());
     }
 
 }
